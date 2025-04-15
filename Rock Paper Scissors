@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>noval doesn't know how to program rock paper scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .game-container {
+            padding: 50px;
+            margin-top: 100px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h2, h3 {
+            color: #444;
+        }
+
+        .choices {
+            margin: 20px;
+        }
+
+        .btn {
+            padding: 20px 40px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        #result {
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        button#reset {
+            background-color: #e74c3c;
+            color: white;
+            font-size: 18px;
+            padding: 10px 30px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button#reset:hover {
+            background-color: #c0392b;
+        }
+
+        .competitive-message {
+            color: #e67e22;
+            font-size: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>noval doesn't know how to program rock paper scissors</h1>
+        <div class="choices">
+            <button id="rock" class="btn">rock</button>
+            <button id="paper" class="btn">paper</button>
+            <button id="scissors" class="btn">Scissors</button>
+        </div>
+        <h2>computer's choice: <span id="computer-choice">?</span></h2>
+        <h2>your choice: <span id="player-choice">?</span></h2>
+        <h3 id="result">make your choice</h3>
+        <p class="competitive-message">noval's handwriting is horrible and arab</p>
+        <button id="reset" style="display: none;">play again lol</button>
+    </div>
+    <script>
+        // rock paper scisosrs
+        const choices = ["rock", "paper", "scissors"];
+        
+        // var
+        const playerChoiceElem = document.getElementById("player-choice");
+        const computerChoiceElem = document.getElementById("computer-choice");
+        const resultElem = document.getElementById("result");
+        const resetBtn = document.getElementById("reset");
+
+        // button clicks
+        document.querySelectorAll(".btn").forEach((button) => {
+            button.addEventListener("click", () => {
+                const playerChoice = button.id;
+                const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+                // display player and computer choices
+                playerChoiceElem.textContent = playerChoice;
+                computerChoiceElem.textContent = computerChoice;
+
+                let result = ""; // starts
+
+                // game logic
+                if (playerChoice === computerChoice) {
+                    result = "its a tie";
+                } else if (
+                    (playerChoice === "rock" && computerChoice === "scissors") ||
+                    (playerChoice === "paper" && computerChoice === "rock") ||
+                    (playerChoice === "scissors" && computerChoice === "paper")
+                ) {
+                    result = "you win!!! noval's gpa calculator sucks btw!!!";
+                } else {
+                    result = "you lose but hey i bet you're still a better programmer than noval";
+                }
+
+                resultElem.textContent = result;
+
+                // show reset
+                resetBtn.style.display = "block";
+            });
+        });
+
+        // reset funcitonality
+        resetBtn.addEventListener("click", () => {
+            playerChoiceElem.textContent = "?";
+            computerChoiceElem.textContent = "?";
+            resultElem.textContent = "make your choice";
+            resetBtn.style.display = "none"; // hide reset button
+        });
+    </script>
+</body>
+</html>
