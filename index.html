@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>noval doesn't know how to program rock paper scissors</title>
+    <title>Rock Paper Scissors Against CPU</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,29 +82,27 @@
 </head>
 <body>
     <div class="game-container">
-        <h1>noval doesn't know how to program rock paper scissors</h1>
+        <h1>Rock Paper Scissors Against CPU</h1>
         <div class="choices">
             <button id="rock" class="btn">rock</button>
             <button id="paper" class="btn">paper</button>
-            <button id="scissors" class="btn">Scissors</button>
+            <button id="scissors" class="btn">scissors</button>
         </div>
         <h2>computer's choice: <span id="computer-choice">?</span></h2>
         <h2>your choice: <span id="player-choice">?</span></h2>
-        <h3 id="result">make your choice</h3>
-        <p class="competitive-message">noval's handwriting is horrible and arab</p>
-        <button id="reset" style="display: none;">play again lol</button>
+        <h3 id="result">choose your move</h3>
+        <p class="competitive-message">noval's handwriting is horrible</p>
+        <button id="reset" style="display: none;">play again!</button>
     </div>
     <script>
-        // rock paper scisosrs
+
         const choices = ["rock", "paper", "scissors"];
         
-        // var
         const playerChoiceElem = document.getElementById("player-choice");
         const computerChoiceElem = document.getElementById("computer-choice");
         const resultElem = document.getElementById("result");
         const resetBtn = document.getElementById("reset");
 
-        // button clicks
         document.querySelectorAll(".btn").forEach((button) => {
             button.addEventListener("click", () => {
                 const playerChoice = button.id;
@@ -116,32 +114,33 @@
 
                 let result = ""; // starts
 
-                // game logic
                 if (playerChoice === computerChoice) {
-                    result = "its a tie";
+                    result = "tie!";
                 } else if (
                     (playerChoice === "rock" && computerChoice === "scissors") ||
                     (playerChoice === "paper" && computerChoice === "rock") ||
                     (playerChoice === "scissors" && computerChoice === "paper")
                 ) {
-                    result = "you win!!! noval's gpa calculator sucks btw!!!";
+                    result = "you win!";
                 } else {
-                    result = "you lose but hey i bet you're still a better programmer than noval";
+                    result = "you lost.";
                 }
 
                 resultElem.textContent = result;
 
-                // show reset
+
+
+                
                 resetBtn.style.display = "block";
             });
         });
 
-        // reset funcitonality
+    
         resetBtn.addEventListener("click", () => {
             playerChoiceElem.textContent = "?";
             computerChoiceElem.textContent = "?";
             resultElem.textContent = "make your choice";
-            resetBtn.style.display = "none"; // hide reset button
+            resetBtn.style.display = "none";
         });
     </script>
 </body>
